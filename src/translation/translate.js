@@ -35,12 +35,10 @@ Zotero.Translate.ItemSaver.prototype.saveItems = async function (jsonItems, atta
 }
 
 // Translation architecture shims and monkey-patches
-var wgxpath = require('wicked-good-xpath');
-global.XPathResult = wgxpath.XPathResultType;
 var { JSDOM } = require('jsdom');
 var dom = new JSDOM('<html></html>');
-wgxpath.install(dom.window, true);
 global.DOMParser = dom.window.DOMParser;
+global.XPathResult = dom.window.XPathResult;
 global.XMLSerializer = require("w3c-xmlserializer/lib/XMLSerializer").interface;
 
 // Shimming innerText property for JSDOM attributes, see https://github.com/jsdom/jsdom/issues/1245

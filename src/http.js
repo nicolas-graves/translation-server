@@ -29,7 +29,6 @@ var iconv = require('iconv-lite');
 var url = require('url');
 var jsdom = require('jsdom');
 var { JSDOM } = jsdom;
-var wgxpath = require('wicked-good-xpath');
 var MIMEType = require("whatwg-mimetype"); // Use the same MIME type library as JSDOM
 
 /**
@@ -165,7 +164,6 @@ Zotero.HTTP = new function() {
 				contentType: response.headers['content-type']
 			});
 			
-			wgxpath.install(dom.window, true);
 			result.response = dom.window.document;
 			
 			// Follow meta redirects in HTML files
